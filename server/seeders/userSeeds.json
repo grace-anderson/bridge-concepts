@@ -1,0 +1,55 @@
+[
+  {
+    "firstName": "Tim",
+    "lastName": "Polo",
+    "company": "Nambucca Engineering",
+    "email": "tim@nambuccaeng.com",
+    "phone": "0400 000 000",
+    "type": "Admin",
+    "password": "12345",
+    "address": {
+      "number": "3a",
+      "streetName": "nyora",
+      "streetType": "close",
+      "suburb": "coffs harbour",
+      "state": "nsw",
+      "country": "australia"
+    }
+  },
+  {
+    "firstName": "Isambard-Kingdom",
+    "lastName": "Brunel",
+    "company": "Brunel",
+    "email": "issy@brunel.com",
+    "phone": "0411 111 111",
+    "type": "User",
+    "password": "12345",
+    "address": {
+      "unit": "7a",
+      "number": "70",
+      "streetName": "first",
+      "streetType": "avenue",
+      "suburb": "sawtell",
+      "state": "nsw",
+      "country": "australia"
+    }
+  },
+  {
+    "firstName": "Thomas",
+    "lastName": "Telford",
+    "company": "Telford",
+    "email": "tom@telford.com",
+    "phone": "0422 222 222",
+    "type": "User",
+    "password": "12345",
+    "address": {
+      "unit": "7a",
+      "number": "70",
+      "streetName": "first",
+      "streetType": "avenue",
+      "suburb": "sawtell",
+      "state": "nsw",
+      "country": "australia"
+    }
+  }
+]
