@@ -3,10 +3,17 @@ import { Link } from 'react-router-dom';
 // import { useMutation } from '@apollo/client';
 // import Auth from '../utils/auth';
 // import { ADD_USER } from '../utils/mutations';
+import Map from './Map';
 
 function LocationForm(props) {
     const [formState, setFormState] = useState();
     // const [addUser] = useMutation(ADD_USER);
+
+    // Google maps render
+    const render = (status: Status): ReactElement => {
+        if (status === Status.FAILURE) return (<p>Failed.....</p>);
+        return (<p>Failed.....</p>);
+    };
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -41,6 +48,9 @@ function LocationForm(props) {
                     <input id="locationAddress" name="locationAddress" placeholder="Search Address" type="text" className="w-100 m-1"
                         onChange={handleChange}
                     />
+                </div>
+                <div id="googleMapsDiv">
+                    <Map />
                 </div>
                 <div className="col-12 col-lg-3 m-1">
                     <button className="btn btn-secondary my-1" type="submit">Submit Step</button>

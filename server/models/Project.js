@@ -16,8 +16,13 @@ const projectSchema = new Schema({
     required: true,
     trim: true
   },
+  lat: {
+    type: Number,
+  },
+  lng: {
+    type: Number,
+  },
   client: Client.schema,
-  address: Address.schema,
   bridge: Bridge.schema,
 });
 

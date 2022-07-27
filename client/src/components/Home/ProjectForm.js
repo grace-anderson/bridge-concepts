@@ -1,25 +1,37 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-// import { useMutation } from '@apollo/client';
-// import Auth from '../utils/auth';
-// import { ADD_USER } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
+import { ADD_PROJECT } from '../../utils/mutations';
+
+// Context and reducer imports
+import { UPDATE_PROJECT } from '../../utils/actions';
+import { useUserContext } from "../../utils/GlobalState";
 
 function ProjectForm(props) {
+    // Add context and state
+    const [state, dispatch] = useUserContext();
     const [formState, setFormState] = useState();
-    // const [addUser] = useMutation(ADD_USER);
+
+    const [addProject] = useMutation(ADD_PROJECT);
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        // const mutationResponse = await addUser({
-        //   variables: {
-        //     email: formState.email,
-        //     password: formState.password,
-        //     firstName: formState.firstName,
-        //     lastName: formState.lastName,
-        //   },
-        // });
-        // const token = mutationResponse.data.addUser.token;
-        // Auth.login(token);
+        // Database update
+        try {
+            const mutationResponse = await addProject({
+                variables: {
+                    name: formState.projectName,
+                    reference: formState.projectReference
+                },
+            });
+            const data = mutationResponse.data.addProject
+            // State Update
+            dispatch({
+                type: UPDATE_PROJECT,
+                payload: data
+            })
+        } catch (e) {
+            console.log(e);
+        }
     };
 
     const handleChange = (event) => {
