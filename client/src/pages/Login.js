@@ -78,7 +78,7 @@ function Login(props) {
           </div>
         ) : null}
         <div className="col-12 col-lg-3 m-1">
-          <button className="btn btn-secondary my-1" type="submit">Submit Step</button>
+          <button className="btn btn-secondary my-1" type="submit">Submit</button>
         </div>
       </form>
     </div>

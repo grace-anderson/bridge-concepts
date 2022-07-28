@@ -70,6 +70,7 @@ mutation addBridgeToProject($type: String!, $length: String!, $width: String, $l
     length
     width
     loadType
+    openToSuggestions
   }
 }
 `;

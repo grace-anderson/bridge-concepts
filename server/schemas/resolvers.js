@@ -73,8 +73,8 @@ const resolvers = {
       return client
     },
     // Bridge
-    addBridgeToProject: async (parent, { type, length, width, loadType }) => {
-      const bridge = await Bridge.create({ type, length, width, loadType });
+    addBridgeToProject: async (parent, { type, length, width, loadType, openToSuggestions }) => {
+      const bridge = await Bridge.create({ type, length, width, loadType, openToSuggestions });
       // Add to project
       return bridge
     },
