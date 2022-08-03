@@ -28,6 +28,7 @@ const typeDefs = gql`
   }
 
   type Bridge {
+    _id: ID
     type: String! # Steel, conc, timber etc
     length: String!
     width: String
@@ -88,9 +89,9 @@ const typeDefs = gql`
     removeUser: User #Note: doesn't need an _id in the body as it uses the context.user._id in the resolver.
     #Projects
     addProject(name: String!, reference: String!): Project
-    addClient(firstName: String!, lastName: String!, company: String, email: String!, phone: String, unit: String number: String! streetName: String! streetType: String! suburb: String! state: String country: String): Client
-    addBridgeToProject(type: String!, length: String!, width: String, loadType: String, openToSuggestions: Boolean, projectId: ID!): Bridge
-    addLocationToBridge(lat0: Float, lng0: Float, elev0: Float, lat1: Float, lng1: Float, elev1: Float): Location
+    addClient(firstName: String!, lastName: String!, company: String, email: String!, phone: String, unit: String number: String! streetName: String! streetType: String! suburb: String! state: String country: String, projectId: String): Client
+    addBridgeToProject(type: String!, length: String!, width: String, loadType: String, openToSuggestions: Boolean, projectId: String): Bridge
+    addLocationToBridge(lat0: Float, lng0: Float, elev0: Float, lat1: Float, lng1: Float, elev1: Float, bridgeId: String): Location
   }
 `;
 

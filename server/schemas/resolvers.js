@@ -18,7 +18,7 @@ const resolvers = {
       return Project.find();
     },
     project: async (parent, args) => {
-      return Project.findOne({ _id: args._id });
+      return Project.findOne({ _id: args._id }).populate('bridge').populate('client');
     },
     // By adding context to our query, we can retrieve the logged in user without specifically searching for them
     me: async (parent, args, context) => {
@@ -67,25 +67,35 @@ const resolvers = {
       return project
     },
     // Client -----------------------------------------------------------------------
-    addClient: async (parent, { firstName, lastName, email, phone, ...address }) => {
+    addClient: async (parent, { projectId, firstName, lastName, email, phone, ...address }) => {
       const client = await Client.create({ firstName, lastName, email, phone, address });
       // Add to project
+      const project = await Project.findOneAndUpdate(
+        { _id: projectId },
+        { client: client._id },
+        { new: true }
+      );
       return client
     },
     // Bridge
-    addBridgeToProject: async (parent, { type, length, width, loadType, openToSuggestions, projectId }) => {
+    addBridgeToProject: async (parent, { projectId, type, length, width, loadType, openToSuggestions }) => {
       const bridge = await Bridge.create({ type, length, width, loadType, openToSuggestions, projectId });
       // Add to project
       const project = await Project.findOneAndUpdate(
         { _id: projectId },
-        { $inc: { bridge: bridge._id } },
+        { bridge: bridge._id },
         { new: true }
       );
       return bridge
     },
-    addLocationToBridge: async (parent, { lat0, lng0, elev0, lat1, lng1, elev1 }) => {
+    addLocationToBridge: async (parent, { bridgeId, lat0, lng0, elev0, lat1, lng1, elev1 }) => {
       const location = await Location.create({ lat0, lng0, elev0, lat1, lng1, elev1 });
       // Add to project
+      const bridge = await Bridge.findOneAndUpdate(
+        { _id: bridgeId },
+        { location: location },
+        { new: true }
+      );
       return location
     },
   },

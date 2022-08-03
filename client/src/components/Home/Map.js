@@ -57,6 +57,7 @@ const Map = function () {
         try {
             const mutationResponse = await addLocationToBridge({
                 variables: {
+                    bridgeId: state.bridge._id,
                     lat0: formState.lat0,
                     lng0: formState.lng0,
                     elev0: formState.elev0,

@@ -53,12 +53,12 @@ function BridgeForm(props) {
         try {
             const mutationResponse = await addBridgeToProject({
                 variables: {
+                    projectId: state.project._id,
                     type: formState.type,
                     length: formState.length,
                     width: formState.width,
                     loadType: formState.loadType,
-                    openToSuggetions: formState.openToSuggetions,
-                    projectId: state.project._id
+                    openToSuggetions: formState.openToSuggetions
                 },
             });
             const data = mutationResponse.data.addBridgeToProject;

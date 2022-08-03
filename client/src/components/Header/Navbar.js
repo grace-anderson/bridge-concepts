@@ -8,7 +8,7 @@ const AppNavbar = () => {
   // Add context and state
   const [state, dispatch] = useUserContext();
   const logState = () => {
-    console.log(state.project._id)
+    console.log(state)
   }
 
   return (
