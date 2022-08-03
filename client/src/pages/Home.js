@@ -7,6 +7,7 @@ import ProjectForm from '../components/Home/ProjectForm';
 import ClientForm from '../components/Home/ClientForm';
 import BridgeForm from '../components/Home/BridgeForm';
 import LocationForm from '../components/Home/LocationForm';
+import SubmitForm from '../components/Home/SubmitForm';
 
 import About from './About'
 
@@ -27,6 +28,7 @@ const Home = () => {
               <ClientForm />
               <BridgeForm />
               <LocationForm />
+              <SubmitForm />
             </div>
           </div>
         )}

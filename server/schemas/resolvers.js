@@ -1,4 +1,4 @@
-const { User, Project, Client, Bridge } = require('../models');
+const { User, Project, Client, Bridge, Location } = require('../models');
 
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
@@ -73,10 +73,20 @@ const resolvers = {
       return client
     },
     // Bridge
-    addBridgeToProject: async (parent, { type, length, width, loadType, openToSuggestions }) => {
-      const bridge = await Bridge.create({ type, length, width, loadType, openToSuggestions });
+    addBridgeToProject: async (parent, { type, length, width, loadType, openToSuggestions, projectId }) => {
+      const bridge = await Bridge.create({ type, length, width, loadType, openToSuggestions, projectId });
       // Add to project
+      const project = await Project.findOneAndUpdate(
+        { _id: projectId },
+        { $inc: { bridge: bridge._id } },
+        { new: true }
+      );
       return bridge
+    },
+    addLocationToBridge: async (parent, { lat0, lng0, elev0, lat1, lng1, elev1 }) => {
+      const location = await Location.create({ lat0, lng0, elev0, lat1, lng1, elev1 });
+      // Add to project
+      return location
     },
   },
 };

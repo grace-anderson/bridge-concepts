@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 // Context and reducer imports
-import reducer from '../utils/reducers';
 import { UPDATE_USER } from '../utils/actions';
 import { useUserContext } from "../utils/GlobalState";
 
 function Login(props) {
   const [state, dispatch] = useUserContext();
   const [formState, setFormState] = useState({ email: '', password: '' });
+  // We get React Router's navigate object so we can access and adjust browser history
+  const navigate = useNavigate();
 
   const [login, { error }] = useMutation(LOGIN);
 
@@ -21,16 +22,14 @@ function Login(props) {
       const mutationResponse = await login({
         variables: { email: formState.email, password: formState.password },
       });
-      const data = mutationResponse.data.login.user;
+      const data = { ...mutationResponse.data.login.user };
       const token = mutationResponse.data.login.token;
-
       dispatch({
         type: UPDATE_USER,
         payload: data
       })
       Auth.login(token);
-      console.log(data)
-
+      navigate('/')
     } catch (e) {
       console.log(e);
     }

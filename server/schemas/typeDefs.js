@@ -11,12 +11,29 @@ const typeDefs = gql`
     country: String
   }
 
+  type Location {
+    # Takes in two points for a centreline
+    lat0: Float
+    lng0: Float
+    elev0: Float
+    lat1: Float
+    lng1: Float
+    elev1: Float
+    x0: Float
+    y0: Float
+    z0: Float
+    x1: Float
+    y1: Float
+    z1: Float
+  }
+
   type Bridge {
     type: String! # Steel, conc, timber etc
     length: String!
     width: String
     loadType: String
     openToSuggestions: Boolean
+    location: Location
   }
   
   type User {
@@ -72,7 +89,8 @@ const typeDefs = gql`
     #Projects
     addProject(name: String!, reference: String!): Project
     addClient(firstName: String!, lastName: String!, company: String, email: String!, phone: String, unit: String number: String! streetName: String! streetType: String! suburb: String! state: String country: String): Client
-    addBridgeToProject(type: String!, length: String!, width: String, loadType: String, openToSuggestions: Boolean): Bridge
+    addBridgeToProject(type: String!, length: String!, width: String, loadType: String, openToSuggestions: Boolean, projectId: ID!): Bridge
+    addLocationToBridge(lat0: Float, lng0: Float, elev0: Float, lat1: Float, lng1: Float, elev1: Float): Location
   }
 `;
 

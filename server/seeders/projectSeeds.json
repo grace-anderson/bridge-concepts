@@ -1,71 +1,10 @@
 [
   {
     "name": "Clifton Suspension Bridge",
-    "reference": "18001",
-    "client": {
-      "firstName": "Isambard-Kingdom",
-      "lastName": "Brunel",
-      "company": "Brunel",
-      "email": "issy@brunel.com",
-      "phone": "0400 000 000",
-      "address": {
-        "number": "3a",
-        "streetName": "nyora",
-        "streetType": "close",
-        "suburb": "coffs harbour",
-        "state": "nsw",
-        "country": "australia"
-      }
-    },
-    "address": {
-      "number": "6",
-      "streetName": "high",
-      "streetType": "street",
-      "suburb": "bowraville",
-      "state": "nsw",
-      "country": "australia"
-    },
-    "bridge": {
-      "type": "Concrete",
-      "length": "20",
-      "width": "7.2",
-      "loadType": "SM1600",
-      "openToSuggestions": "true"
-    }
+    "reference": "18001"
   },
   {
     "name": "Menai Suspension Bridge",
-    "reference": "20001",
-    "client": {
-      "firstName": "Thomas",
-      "lastName": "Telford",
-      "company": "Telford Associates",
-      "email": "tom@telfordass.com",
-      "phone": "0411 111 111",
-      "address": {
-        "unit": "7a",
-        "number": "70",
-        "streetName": "first",
-        "streetType": "avenue",
-        "suburb": "sawtell",
-        "state": "nsw",
-        "country": "australia"
-      }
-    },
-    "address": {
-      "number": "44",
-      "streetName": "princess",
-      "streetType": "street",
-      "suburb": "macksville",
-      "state": "nsw",
-      "country": "australia"
-    },
-    "bridge": {
-      "type": "Concrete",
-      "length": "10",
-      "width": "4.5",
-      "loadType": "SM1600",
-      "openToSuggestions": "true"
-    }
+    "reference": "20001"
   }
 ]

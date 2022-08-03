@@ -3,11 +3,15 @@ import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
+
 // Import React pages and components
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import About from './pages/About';
+import Projects from './pages/Projects';
+import Project from './pages/Project';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -61,6 +65,14 @@ function App() {
                 <Route
                   path="/about"
                   element={<About />}
+                />
+                <Route
+                  path="/projects"
+                  element={<Projects />}
+                />
+                <Route
+                  path="/projects/:_id"
+                  element={<Project />}
                 />
               </Routes>
             </div>

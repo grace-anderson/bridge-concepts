@@ -64,13 +64,25 @@ mutation addClient($firstName: String!, $lastName: String!, $email: String!, $nu
 `;
 
 export const ADD_BRIDGE_TO_PROJECT = gql`
-mutation addBridgeToProject($type: String!, $length: String!, $width: String, $loadType: String, $openToSuggestions: Boolean) {
-  addBridgeToProject(type: $type, length: $length, width: $width, loadType: $loadType, openToSuggestions: $openToSuggestions) {
+mutation addBridgeToProject($type: String!, $length: String!, $width: String, $loadType: String, $openToSuggestions: Boolean, $projectId: ID!) {
+  addBridgeToProject(type: $type, length: $length, width: $width, loadType: $loadType, openToSuggestions: $openToSuggestions, projectId: $projectId) {
     type
     length
     width
     loadType
     openToSuggestions
+  }
+}
+`;
+export const ADD_LOCATION_TO_BRIDGE = gql`
+mutation addLocationToBridge($lat0: Float, $lng0: Float, $elev0: Float, $lat1: Float, $lng1: Float, $elev1: Float) {
+  addLocationToBridge(lat0: $lat0, lng0: $lng0, elev0: $elev0, lat1: $lat1, lng1: $lng1, elev1: $elev1) {
+    lat0
+    lng0
+    elev0
+    lat1
+    lng1
+    elev1
   }
 }
 `;

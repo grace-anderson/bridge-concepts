@@ -29,7 +29,7 @@ function ClientForm(props) {
                     streetType: formState.streetType,
                     suburb: formState.suburb,
                     state: formState.state,
-                    country: formState.country,
+                    country: formState.country
                 },
             })
             const data = mutationResponse.data.addClient

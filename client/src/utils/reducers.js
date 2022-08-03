@@ -3,14 +3,15 @@ import {
   UPDATE_USER,
   UPDATE_PROJECT,
   UPDATE_CLIENT,
-  UPDATE_BRIDGE
+  UPDATE_BRIDGE,
+  UPDATE_LOCATION
 } from "./actions";
 
 export const reducer = (state, action) => {
 
   switch (action.type) {
     case UPDATE_USER:
-      console.log({ state, action })
+
       return {
         ...state,
         user: { ...action.payload },
@@ -29,6 +30,11 @@ export const reducer = (state, action) => {
       return {
         ...state,
         bridge: { ...action.payload },
+      };
+    case UPDATE_LOCATION:
+      return {
+        ...state,
+        location: { ...action.payload },
       };
     default:
       return state;

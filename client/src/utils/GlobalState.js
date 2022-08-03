@@ -10,8 +10,8 @@ const UserProvider = ({ value = [], ...props }) => {
         project: {},
         client: {},
         bridge: {},
+        searchAddress: {},
         location: {}
-
     });
 
     return <Provider value={[state, dispatch]} {...props} />;

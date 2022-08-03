@@ -22,8 +22,16 @@ const projectSchema = new Schema({
   lng: {
     type: Number,
   },
-  client: Client.schema,
-  bridge: Bridge.schema,
+  client:
+  {
+    type: Schema.Types.ObjectId,
+    ref: 'Client',
+  },
+  bridge:
+  {
+    type: Schema.Types.ObjectId,
+    ref: 'Bridge',
+  }
 });
 
 

@@ -47,8 +47,9 @@ function BridgeForm(props) {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+
+        console.log(state.project._id)
         // Database update
-        console.log(formState.openToSuggestions)
         try {
             const mutationResponse = await addBridgeToProject({
                 variables: {
@@ -56,7 +57,8 @@ function BridgeForm(props) {
                     length: formState.length,
                     width: formState.width,
                     loadType: formState.loadType,
-                    openToSuggetions: formState.openToSuggetions
+                    openToSuggetions: formState.openToSuggetions,
+                    projectId: state.project._id
                 },
             });
             const data = mutationResponse.data.addBridgeToProject;

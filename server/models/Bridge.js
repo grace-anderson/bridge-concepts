@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
+const Location = require('./Location');
+
 const bridgeSchema = new Schema({
   type: {
     type: String,
@@ -22,6 +24,8 @@ const bridgeSchema = new Schema({
     type: Boolean,
     default: false
   },
+  location: Location.schema
+
 });
 
 const Bridge = mongoose.model('Bridge', bridgeSchema);

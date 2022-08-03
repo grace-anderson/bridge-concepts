@@ -8,7 +8,7 @@ const AppNavbar = () => {
   // Add context and state
   const [state, dispatch] = useUserContext();
   const logState = () => {
-    console.log(state)
+    console.log(state.project._id)
   }
 
   return (
@@ -19,9 +19,8 @@ const AppNavbar = () => {
             <li className="px-1 mx-1">
               <Link className="nav-link text-Black" to="/">Home</Link>
             </li>
-
             <li className="px-1 mx-1">
-              <Link className="nav-link text-Grey" to="/explorebridges">Explore Bridges</Link>
+              <Link className="nav-link text-Grey" to="/projects">Projects</Link>
             </li>
             <li className="px-1 mx-1">
               <Link className="nav-link text-Grey" to="/about">About</Link>
