@@ -4,6 +4,8 @@ import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 
+import Select from 'react-select';
+
 // Context and reducer imports
 import { UPDATE_USER } from '../utils/actions';
 import { useUserContext } from "../utils/GlobalState";
@@ -15,6 +17,14 @@ function Signup(props) {
 
   const navigate = useNavigate();
 
+  const userTypeOptions = [
+    { value: 'council', label: 'council' },
+    { value: 'contractor', label: 'contractor' },
+    { value: 'consultant', label: 'consultant' },
+    { value: 'government', label: 'government' },
+    { value: 'admin', label: 'admin' }
+  ]
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     const mutationResponse = await addUser({
@@ -23,7 +33,7 @@ function Signup(props) {
         password: formState.password,
         firstName: formState.firstName,
         lastName: formState.lastName,
-        type: 'normal'
+        type: formState.type
       },
     });
     const data = { ...mutationResponse.data.addUser.user };
@@ -34,6 +44,14 @@ function Signup(props) {
     })
     Auth.login(token);
     navigate('/')
+  };
+
+  const handleTypeChange = (selectedOption) => {
+    const { value } = selectedOption;
+    setFormState({
+      ...formState,
+      type: value,
+    });
   };
 
   const handleChange = (event) => {
@@ -72,6 +90,9 @@ function Signup(props) {
           <input id="address" placeholder="Billing Address" name="address" type="text" className="m-1"
             onChange={handleChange}
           />
+          <div className="row">
+            <Select className="col-6 my-1" options={userTypeOptions} onChange={handleTypeChange} />
+          </div>
           <div className="col-12 col-lg-3 m-1">
             <button className="btn btn-secondary my-1" type="submit">Submit</button>
           </div>
