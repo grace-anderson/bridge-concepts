@@ -32,7 +32,7 @@ const AppNavbar = () => {
             ) : (
               <div>
                 <li className="px-1 mx-1">
-                  <Link className="nav-link text-Grey" to="/about" onClick={Auth.logout}>Logout</Link>
+                  <Link className="nav-link text-Grey" to="/" onClick={Auth.logout}>Logout</Link>
                 </li>
               </div>
             )}
