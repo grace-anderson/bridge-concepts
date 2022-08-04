@@ -1,10 +1,10 @@
-import React, { useState, useMemo, useRef } from 'react';
-import { GoogleMap, useLoadScript, Marker, Autocomplete, Polyline, Rectangle, GroundOverlay, GroundOverlayProps } from "@react-google-maps/api";
+import React, { useState, useMemo, useRef, useEffect } from 'react';
+import { GoogleMap, useLoadScript, Polyline, GroundOverlay, GroundOverlayProps } from "@react-google-maps/api";
+
 import './map.css'
 import PlacesAutocomplete from './PlacesAutocomplete';
 import { ADD_LOCATION_TO_BRIDGE } from '../../utils/mutations';
-import { useMutation } from '@apollo/client';
-// const ScriptLoaded = require("@react-google-maps/api/docs/ScriptLoaded").default;
+import { useMutation, useQuery } from '@apollo/client';
 
 // Context and reducer imports
 import { UPDATE_LOCATION } from '../../utils/actions';
@@ -13,6 +13,7 @@ import { useUserContext } from "../../utils/GlobalState";
 const Map = function () {
     const [formState, setFormState] = useState()
     const [state, dispatch] = useUserContext();
+    const [addLocationToBridge] = useMutation(ADD_LOCATION_TO_BRIDGE);
 
     // Google Maps Variables
     const [map, setMap] = useState(null)
@@ -47,7 +48,7 @@ const Map = function () {
         west: 152.856378415811
     };
 
-    const [addLocationToBridge] = useMutation(ADD_LOCATION_TO_BRIDGE);
+
 
     //Form submits
     const handleFormSubmit = async (event) => {
@@ -66,21 +67,16 @@ const Map = function () {
                     elev1: formState.elev1
                 },
             });
-            const data = mutationResponse.data.addLocationToBridge
-            console.log("Data", data)
+            const thisData = mutationResponse.thisData.addLocationToBridge
             // State Update
             dispatch({
                 type: UPDATE_LOCATION,
-                payload: data
+                payload: thisData
             })
         } catch (e) {
             console.log(e);
         }
     };
-
-    const onLoad = rectangle => {
-        console.log('rectangle: ', rectangle)
-    }
 
 
     const handlePolylineChange = (event) => {
@@ -109,9 +105,6 @@ const Map = function () {
             default:
                 console.log("Error with latitude and longitude form State")
         }
-
-
-
     };
 
     function drawPolyline(event) {
@@ -150,11 +143,11 @@ const Map = function () {
                             options={polyLineOptions}
                             onMouseUp={handlePolylineChange}
                         />
-                        <GroundOverlay
+                        {/* <GroundOverlay
                             key={'url'}
                             url='https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg'
                             bounds={bounds}
-                        />
+                        /> */}
                     </GoogleMap>
                     {/* </ScriptLoaded> */}
                 </div>

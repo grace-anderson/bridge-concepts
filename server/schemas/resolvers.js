@@ -27,13 +27,12 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-
   },
 
   Mutation: {
     // User --------------------------------------------------------------------------------------------------
-    addUser: async (parent, { firstName, lastName, email, password }) => {
-      const user = await User.create({ firstName, lastName, email, password });
+    addUser: async (parent, { firstName, lastName, email, password, type }) => {
+      const user = await User.create({ firstName, lastName, email, password, type });
       const token = signToken(user);
 
       return { token, user };
@@ -64,6 +63,12 @@ const resolvers = {
     // Project --------------------------------------------------------------------------------------------------
     addProject: async (parent, args) => {
       const project = await Project.create(args);
+      // Add to user
+      const user = await User.findOneAndUpdate(
+        { _id: args.userId },
+        { $addToSet: { projects: project._id } },
+        { new: true }
+      );
       return project
     },
     // Client -----------------------------------------------------------------------

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Auth from '../utils/auth'
 
 // Import Components for page
@@ -9,14 +9,19 @@ import BridgeForm from '../components/Home/BridgeForm';
 import LocationForm from '../components/Home/LocationForm';
 import SubmitForm from '../components/Home/SubmitForm';
 
+import { useUserContext } from "../utils/GlobalState";
+
 import About from './About'
 
 const Home = () => {
+  // Add context and state
+  const [state, dispatch] = useUserContext();
+
 
   return (
     <main className="bg-Light text-Grey">
       <div>
-        {!Auth.loggedIn() ? (
+        {!state.user._id ? (
           <About />
         ) : (
           <div>

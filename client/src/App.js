@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import About from './pages/About';
+import Submitted from './pages/Submitted';
 import Projects from './pages/Projects';
 import Project from './pages/Project';
 
@@ -40,6 +41,11 @@ const client = new ApolloClient({
 });
 
 function App() {
+
+  useEffect(() => {
+    document.title = "Bridge Concepts"
+  }, [])
+
   return (
     <ApolloProvider client={client}>
       <UserProvider>
@@ -69,6 +75,10 @@ function App() {
                 <Route
                   path="/projects"
                   element={<Projects />}
+                />
+                <Route
+                  path="/submitted"
+                  element={<Submitted />}
                 />
                 <Route
                   path="/projects/:_id"

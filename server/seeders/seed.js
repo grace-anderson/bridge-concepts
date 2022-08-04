@@ -1,5 +1,5 @@
 const db = require('../config/connection');
-const { User, Project } = require('../models');
+const { User, Project, Key } = require('../models');
 const userSeeds = require('./userSeeds.json');
 const projectSeeds = require('./projectSeeds.json');
 
@@ -9,6 +9,7 @@ db.once('open', async () => {
     await User.create(userSeeds);
     await Project.deleteMany({});
     await Project.create(projectSeeds);
+
 
     console.log('all done!');
     process.exit(0);

@@ -62,10 +62,9 @@ const typeDefs = gql`
     _id: ID
     name: String!
     reference: String!
-    lat: Float
-    lng: Float
     client: Client
     bridge: Bridge
+    userId: String
   }
 
   type Auth {
@@ -84,11 +83,11 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(firstName: String!, lastName: String!, company: String, email: String!, phone: String, password: String!): Auth
+    addUser(firstName: String!, lastName: String!, company: String, email: String!, phone: String, password: String!, type: String): Auth
     login(email: String!, password: String!): Auth
     removeUser: User #Note: doesn't need an _id in the body as it uses the context.user._id in the resolver.
     #Projects
-    addProject(name: String!, reference: String!): Project
+    addProject(userId: String, name: String!, reference: String!): Project
     addClient(firstName: String!, lastName: String!, company: String, email: String!, phone: String, unit: String number: String! streetName: String! streetType: String! suburb: String! state: String country: String, projectId: String): Client
     addBridgeToProject(type: String!, length: String!, width: String, loadType: String, openToSuggestions: Boolean, projectId: String): Bridge
     addLocationToBridge(lat0: Float, lng0: Float, elev0: Float, lat1: Float, lng1: Float, elev1: Float, bridgeId: String): Location

@@ -9,26 +9,20 @@ mutation login($email: String!, $password: String!) {
       _id
       firstName
       lastName
+      type
     }
   }
 }
 `;
 export const ADD_USER = gql`
-mutation addUser(
-  $firstName: String!
-  $lastName: String!
-  $email: String!
-  $password: String!
-) {
-  addUser(
-    firstName: $firstName
-    lastName: $lastName
-    email: $email
-    password: $password
-  ) {
+mutation addUser($firstName: String! $lastName: String! $email: String! $password: String!, $type: String) {
+  addUser(firstName: $firstName lastName: $lastName email: $email password: $password, type: $type) {
     token
     user {
       _id
+      firstName
+      lastName
+      type
     }
   }
 }
@@ -36,8 +30,8 @@ mutation addUser(
 
 // Database  -----------------------------------------------------------------------------
 export const ADD_PROJECT = gql`
-mutation addProject($name: String!, $reference: String!) {
-  addProject(name: $name, reference: $reference) {
+mutation addProject($userId: String, $name: String!, $reference: String!) {
+  addProject(userId: $userId, name: $name, reference: $reference) {
     _id
     name
     reference

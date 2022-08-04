@@ -1,17 +1,54 @@
 [
   {
     "firstName": "Tim",
-    "lastName": "Polo",
+    "lastName": "Cruwys",
     "company": "Nambucca Engineering",
     "email": "tim@nambuccaeng.com",
-    "phone": "0400 000 000",
-    "type": "Admin",
+    "phone": "0449646713",
+    "type": "admin",
     "password": "12345",
     "address": {
-      "number": "3a",
-      "streetName": "nyora",
-      "streetType": "close",
-      "suburb": "coffs harbour",
+      "unit": "7a",
+      "number": "70",
+      "streetName": "first",
+      "streetType": "avenue",
+      "suburb": "sawtell",
+      "state": "nsw",
+      "country": "australia"
+    }
+  },
+  {
+    "firstName": "Steve",
+    "lastName": "Cruwys",
+    "company": "Nambucca Engineering",
+    "email": "steve@nambuccaeng.com",
+    "phone": "0400 000 000",
+    "type": "admin",
+    "password": "12345",
+    "address": {
+      "unit": "7a",
+      "number": "70",
+      "streetName": "first",
+      "streetType": "avenue",
+      "suburb": "sawtell",
+      "state": "nsw",
+      "country": "australia"
+    }
+  },
+  {
+    "firstName": "admin",
+    "lastName": "account",
+    "company": "Nambucca Engineering",
+    "email": "admin@nambuccaeng.com",
+    "phone": "0400 000 000",
+    "type": "admin",
+    "password": "12345",
+    "address": {
+      "unit": "7a",
+      "number": "70",
+      "streetName": "first",
+      "streetType": "avenue",
+      "suburb": "sawtell",
       "state": "nsw",
       "country": "australia"
     }
@@ -22,7 +59,7 @@
     "company": "Brunel",
     "email": "issy@brunel.com",
     "phone": "0411 111 111",
-    "type": "User",
+    "type": "normal",
     "password": "12345",
     "address": {
       "unit": "7a",
@@ -40,7 +77,7 @@
     "company": "Telford",
     "email": "tom@telford.com",
     "phone": "0422 222 222",
-    "type": "User",
+    "type": "normal",
     "password": "12345",
     "address": {
       "unit": "7a",

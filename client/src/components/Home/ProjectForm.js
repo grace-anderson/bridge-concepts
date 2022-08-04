@@ -19,6 +19,7 @@ function ProjectForm(props) {
         try {
             const mutationResponse = await addProject({
                 variables: {
+                    userId: state.user._id,
                     name: formState.projectName,
                     reference: formState.projectReference
                 },

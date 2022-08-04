@@ -25,7 +25,7 @@ const AppNavbar = () => {
             <li className="px-1 mx-1">
               <Link className="nav-link text-Grey" to="/about">About</Link>
             </li>
-            {!Auth.loggedIn() ? (
+            {!state.user._id ? (
               <li className="px-1 mx-1">
                 <Link className="nav-link text-Grey" to="/login">Login</Link>
               </li>
@@ -36,11 +36,12 @@ const AppNavbar = () => {
                 </li>
               </div>
             )}
-            {!Auth.loggedIn() ? (
+            {!state.user._id ? (
               <li className="px-1 mx-1">
                 <Link className="nav-link text-Grey" to="/signup">Sign Up</Link>
               </li>) : (<div></div>)}
-            <li className="p-1 m-1 text-danger" onClick={logState}>logState</li>
+            {state.user.type == 'admin' ? (
+              <li className="p-1 m-1 text-danger" onClick={logState}>logState</li>) : (<div></div>)}
           </ul>
         </div>
       </nav>

@@ -9,39 +9,55 @@ function ProjectList() {
 
   const { loading, data } = useQuery(QUERY_PROJECTS);
 
-  // function filterProducts() {
-  //   if (!currentCategory) {
-  //     return state.products;
-  //   }
-
-  //   return state.products.filter(
-  //     (product) => product.category._id === currentCategory
-  //   );
-  // }
   if (loading) {
 
     return <div>Loading...</div>;
-  } else {
+  } else if (state.user.type === 'admin') {
     const projectsArray = data.projects;
+    console.log(data.projects)
 
     return (
       <div className="my-2">
         <h2>Projects:</h2>
         {data ? (
           <div className="flex-row">
-            {projectsArray.map((project) => (
-              <ProjectCard
-                _id={project._id}
-                key={project.name}
-                name={project.name}
-                reference={project.reference}
-              />
-            ))}
-            <p>testing</p>
+            {projectsArray
+              .map((project) => (
+                <ProjectCard
+                  _id={project._id}
+                  key={project.name}
+                  name={project.name}
+                  reference={project.reference}
+                />
+              ))}
           </div>
-
         ) : (
-          <div></div>
+          <div><p>Loading</p></div>
+        )}
+      </div>
+    );
+  } else {
+    const projectsArray = data.projects;
+    console.log(data.projects)
+
+    return (
+      <div className="my-2">
+        <h2>Projects:</h2>
+        {data ? (
+          <div className="flex-row">
+            {projectsArray
+              .filter((project) => project.userId == state.user._id)
+              .map((project) => (
+                <ProjectCard
+                  _id={project._id}
+                  key={project.name}
+                  name={project.name}
+                  reference={project.reference}
+                />
+              ))}
+          </div>
+        ) : (
+          <div><p>Loading</p></div>
         )}
       </div>
     );

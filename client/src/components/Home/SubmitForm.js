@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 function ProjectForm(props) {
+
+    const navigate = useNavigate();
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         // Database update
         try {
-            console.log("Project Submitted")
+            navigate('/submitted')
         } catch (e) {
             console.log(e);
         }

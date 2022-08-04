@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 const Address = require('./Address');
+const Project = require('./Project');
 
 // Email check  from https://thewebdev.info/2022/03/16/how-to-validate-email-syntax-with-mongoose/#:~:text=To%20validate%20email%20syntax%20with%20Mongoose%2C%20we%20can%20set%20the,%40%5Cw%2B(%5B%5C.
 const validateEmail = (email) => {
@@ -46,7 +47,14 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    address: Address.schema
+    type: {
+      type: String,
+    },
+    address: Address.schema,
+    projects: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Project',
+    }]
   },
   {
     toJSON: {

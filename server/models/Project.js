@@ -4,6 +4,7 @@ const { Schema } = mongoose;
 const Address = require('./Address');
 const Client = require('./Client');
 const Bridge = require('./Bridge');
+const User = require('./User');
 
 const projectSchema = new Schema({
   name: {
@@ -16,12 +17,6 @@ const projectSchema = new Schema({
     required: true,
     trim: true
   },
-  lat: {
-    type: Number,
-  },
-  lng: {
-    type: Number,
-  },
   client:
   {
     type: Schema.Types.ObjectId,
@@ -31,7 +26,10 @@ const projectSchema = new Schema({
   {
     type: Schema.Types.ObjectId,
     ref: 'Bridge',
-  }
+  },
+  userId: {
+    type: String,
+  },
 });
 
 

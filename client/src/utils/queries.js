@@ -6,6 +6,7 @@ query projects {
     _id
     name
     reference
+    userId
   }
 }
 `;

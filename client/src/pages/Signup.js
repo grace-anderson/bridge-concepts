@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 
+// Context and reducer imports
+import { UPDATE_USER } from '../utils/actions';
+import { useUserContext } from "../utils/GlobalState";
+
 function Signup(props) {
+  const [state, dispatch] = useUserContext();
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [addUser] = useMutation(ADD_USER);
+
+  const navigate = useNavigate();
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -16,10 +23,17 @@ function Signup(props) {
         password: formState.password,
         firstName: formState.firstName,
         lastName: formState.lastName,
+        type: 'normal'
       },
     });
+    const data = { ...mutationResponse.data.addUser.user };
     const token = mutationResponse.data.addUser.token;
+    dispatch({
+      type: UPDATE_USER,
+      payload: data
+    })
     Auth.login(token);
+    navigate('/')
   };
 
   const handleChange = (event) => {
