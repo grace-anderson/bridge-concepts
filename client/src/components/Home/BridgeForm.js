@@ -20,21 +20,21 @@ function BridgeForm(props) {
             { value: 'timber', label: 'Timber' }
         ],
         length: [
-            { value: '8', label: '8m' },
-            { value: '10', label: '10m' },
-            { value: '12', label: '12m' },
-            { value: '14', label: '14m' },
-            { value: '20', label: '20m' }
+            { value: '8', label: '8m Long' },
+            { value: '10', label: '10m Long' },
+            { value: '12', label: '12m Long' },
+            { value: '14', label: '14m Long' },
+            { value: '20', label: '20m Long' }
         ],
         width: [
-            { value: '4.5', label: '4.5m' },
-            { value: '7.2', label: '7.2m' }
+            { value: '4.5', label: '4.5m Wide' },
+            { value: '7.2', label: '7.2m Wide' }
         ],
         loadType: [
-            { value: 'sm1600', label: 'SM1600' },
-            { value: 't44', label: 'T44' },
-            { value: 'd8Dozer', label: 'D8 Dozer' },
-            { value: '30tExcavator', label: '30t Excavator' }
+            { value: 'sm1600', label: 'SM1600 Load' },
+            { value: 't44', label: 'T44 Load' },
+            { value: 'd8Dozer', label: 'D8 Dozer Load' },
+            { value: '30tExcavator', label: '30t Excavator Load' }
         ],
         openToSuggestions: [
             { value: true, label: 'I am open to Suggestions' },
